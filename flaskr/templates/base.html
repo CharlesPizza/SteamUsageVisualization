@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title>{% block title %}{% endblock %} - S784</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    {%block head%}{% endblock %}
+</head>
+<nav>
+    <h1>Hours Spent</h1>
+
+</nav>
+<section class="content">
+    <header>{% block header %}{% endblock %}</header>
+
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+
+    <body>{%block body%}{% endblock %}</body>
+    
+</section>
+</html>

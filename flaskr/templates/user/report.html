@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block head %}{% endblock %}
+{% block header %}
+    <h1>{% block title %}Gameplay Breakdown{% endblock %}</h1>
+{% endblock %}
+
+
+{% block content %}
+    <form method="post">
+        <label for="steam64ID">Steam64ID</label>
+        <input for="steam64ID" name="steam64ID" id="steam64ID" value = "{{ request.form['steam64ID'] }}" required>
+        <input type="submit" value="Search">
+    </form>
+
+    {% if steamid %}
+        <p>{{ steamid }}</p>
+    {% endif %}
+<!-- Report -->
+    <div align="center">
+        <table width="75%">
+            <tr>
+                <td>Total Hours:</td>
+                <td>{{ summary['total_h'] }}</td>
+            </tr>
+            <tr>
+                <td>Games Owned:</td>
+                <td>{{ summary['games_owned'] }}</td>
+            </tr>
+            <tr>
+                <td>Games Never Played:</td>
+                <td>{{ summary['games_never_played'] }}</td>
+            </tr>
+        </table>
+        <img src="{{ images['top_10_playtimes'] }}" alt="myplot"/>
+        <table>
+            <tr>
+                <td>Bi-Weekly Playtime</td>
+                <td>{{ summary['playtime_hr_2weeks'] }}</td>
+            </tr>
+            <tr>
+                <td>Daily Breakdown</td>
+                <td>{{ summary['daily_2weeks'] }}</td>
+            </tr>
+        </table>
+        <img src="{{ images['daily_average'] }}" alt='boop'/>
+    </div>
+
+
+    <div align="center">
+        <h1>Addiction Breakdown</h1>
+        <table width="75%">
+            <tr>
+                <th colspan="2">Video Game Use</th>
+                <th colspan="4">Alcohol Use</th>
+            </tr>
+            <tr>
+                <td>Weekly Playtime</td>
+                <td>{{ summary['playtime_hr_2weeks']/2 }}</td>
+                <td>Considered a heavy drinker</td>
+                <td>14+</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Bing Drinking</td>
+                <td></td>
+            </tr>            
+        </table>
+        <img width="100%" src="{{ images['daily_vs_addiction'] }}" alt="myplot"/>
+    </div>
+
+
+
+{% endblock %}

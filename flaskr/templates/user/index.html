@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block head %}{% endblock %}
+{% block header %}
+    <h1>{% block title %}Gameplay Breakdown{% endblock %}</h1>
+{% endblock %}
+
+
+{% block content %}
+    <form method="post">
+        <label for="steam64ID">Steam64ID</label>
+        <input for="steam64ID" name="steam64ID" id="steam64ID" value = "{{ request.form['steam64ID'] }}" required>
+        <input type="submit" value="Search">
+    </form>
+
+    {% if steamid %}
+        <p>{{ steamid }}</p>
+    {% endif %}
+
+
+{% endblock %}
